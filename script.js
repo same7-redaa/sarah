@@ -6,6 +6,27 @@ const resourceCache = {
     projects: []
 };
 
+// Performance optimization: Disable hover effects during scroll on mobile
+let scrollTimer;
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+if (isMobile) {
+    let isScrolling = false;
+    
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            document.body.classList.add('disable-hover');
+            isScrolling = true;
+        }
+        
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            document.body.classList.remove('disable-hover');
+            isScrolling = false;
+        }, 150);
+    }, { passive: true });
+}
+
 // Language toggle function
 function toggleLanguage() {
     const currentLang = getCurrentLanguage();

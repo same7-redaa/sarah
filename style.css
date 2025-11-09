@@ -38,6 +38,31 @@
     outline: none;
 }
 
+/* Disable heavy animations on mobile for better performance */
+@media (max-width: 768px) {
+    body::before,
+    body::after {
+        animation: none !important;
+    }
+    
+    .neon-shapes,
+    .hero-adobe-icons {
+        display: none !important;
+    }
+    
+    * {
+        animation-duration: 0.3s !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* Disable hover effects during scroll for better performance */
+body.disable-hover * {
+    pointer-events: none !important;
+    transition: none !important;
+    animation: none !important;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -63,6 +88,17 @@ body {
 .achievement-card {
     transform: translateZ(0);
     backface-visibility: hidden;
+    will-change: transform;
+}
+
+/* Remove will-change on mobile to save memory */
+@media (max-width: 768px) {
+    .portfolio-item,
+    .skill-card,
+    .service-card,
+    .achievement-card {
+        will-change: auto;
+    }
 }
 
 /* Optimize images */
@@ -1877,6 +1913,25 @@ p {
     /* تصغير شامل للمحتويات على الهواتف */
     body {
         font-size: 14px;
+    }
+    
+    /* Reduce blur effects on mobile for better performance */
+    .about,
+    .skills,
+    .services,
+    .why-me,
+    .achievements,
+    .testimonials,
+    .clients,
+    .process,
+    .contact,
+    .skill-card,
+    .service-card,
+    .achievement-card,
+    .testimonial-card,
+    .process-step {
+        backdrop-filter: blur(5px) !important;
+        -webkit-backdrop-filter: blur(5px) !important;
     }
     
     /* نجوم أقل في الموبايل */
