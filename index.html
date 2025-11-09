@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بلال ياسر – مصمم جرافيك مستقل</title>
-    <link rel="icon" href="https://i.postimg.cc/TPCqHSWc/4.png" type="image/png">
+    <title>سارة الوكيل – مطورة مبيعات ومدربة محترفة</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animations-enhancements.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -14,7 +14,7 @@
     <!-- Loading Screen -->
     <div class="loading-screen">
         <div class="loading-content">
-            <img src="https://i.postimg.cc/Hxk3YHC5/logo-1.png" alt="Logo" class="loading-logo">
+            <div class="loading-text">سارة الوكيل</div>
             <div class="loading-spinner"></div>
         </div>
     </div>
@@ -34,7 +34,7 @@
             <nav class="navbar">
                 <div class="logo-language-section">
                     <a href="#home" class="logo">
-                        <img src="https://i.postimg.cc/Hxk3YHC5/logo-1.png" alt="Belal Yasser Logo">
+                        <i class="fas fa-chart-line logo-icon"></i>
                     </a>
                     <button class="language-toggle" onclick="toggleLanguage()">English</button>
                 </div>
@@ -42,8 +42,8 @@
                     <li><a href="#home" class="nav-link" data-translate="nav_home">الرئيسية</a></li>
                     <li><a href="#about" class="nav-link" data-translate="nav_about">من أنا</a></li>
                     <li><a href="#services" class="nav-link" data-translate="nav_services">خدماتي</a></li>
-                    <li><a href="#why-me" class="nav-link" data-translate="nav_why_me">لماذا أنا</a></li>
-                    <li><a href="#portfolio" class="nav-link" data-translate="nav_portfolio">معرض الأعمال</a></li>
+                    <li><a href="#testimonials" class="nav-link" data-translate="nav_testimonials">قصص النجاح</a></li>
+                    <li><a href="#process" class="nav-link" data-translate="nav_process">خطوات العمل</a></li>
                     <li><a href="#contact" class="nav-link" data-translate="nav_contact">تواصل معي</a></li>
                 </ul>
                 <button class="menu-toggle" aria-label="Toggle menu">
@@ -58,19 +58,19 @@
     <main>
         <section class="hero" id="home">
             <div class="hero-bg-overlay"></div>
-            <!-- Adobe Icons Background -->
+            <!-- Sales Icons Background -->
             <div class="hero-adobe-icons">
-                <div class="adobe-icon"></div>
-                <div class="adobe-icon"></div>
-                <div class="adobe-icon"></div>
-                <div class="adobe-icon"></div>
-                <div class="adobe-icon"></div>
-                <div class="adobe-icon"></div>
+                <div class="sales-icon" data-icon="chart-line"></div>
+                <div class="sales-icon" data-icon="users"></div>
+                <div class="sales-icon" data-icon="handshake"></div>
+                <div class="sales-icon" data-icon="trophy"></div>
+                <div class="sales-icon" data-icon="bullseye"></div>
+                <div class="sales-icon" data-icon="rocket"></div>
             </div>
             <div class="container fade-up">
-                <h1 data-translate="hero_title">بلال ياسر</h1>
-                <p class="subtitle" data-translate="hero_subtitle">مصمم جرافيك مستقل، أصنع هويات بصرية جذابة توصل رسالة مشروعك بوضوح.</p>
-                <a href="#portfolio" class="btn btn-primary" data-translate="hero_cta">شاهد أعمالي</a>
+                <h1 data-translate="hero_title">سارة الوكيل</h1>
+                <p class="subtitle" data-translate="hero_subtitle">بساعد شركتك تبني وتطوّر قسم مبيعات قوي يحقق أرقام حقيقية وينمّي البزنس بثقة واستمرار</p>
+                <a href="#contact" class="btn btn-primary" data-translate="hero_cta">ابدأ الآن</a>
             </div>
         </section>
 
@@ -79,13 +79,25 @@
                 <div class="about-grid fade-up">
                     <div class="about-content">
                         <h2 data-translate="about_title">مين أنا؟</h2>
-                        <p data-translate="about_text1">أنا <strong>بلال ياسر</strong>، مصمم جرافيك متخصص في تصميمات السوشيال ميديا والهوية البصرية.</p>
-                        <p data-translate="about_text2">بحب أقدّم تصميم بسيط وفكرته واضحة، يوصل الرسالة من أول نظرة.</p>
-                        <p data-translate="about_text3">اشتغلت مع عملاء من مصر وكمان في السوق الخليجي، وده ساعدني أفهم أكتر اختلاف الذوق وطبيعة الجمهور هناك.</p>
-                        <p data-translate="about_text4">بشوف إن التصميم مش مجرد شكل، لكنه وسيلة توصل الفكرة وتسيب انطباع مميز عن البراند.</p>
+                        <div class="about-text-with-icon">
+                            <i class="fas fa-user-circle about-icon"></i>
+                            <p data-translate="about_text1">أنا <strong>سارة الوكيل</strong>، مطوّرة مبيعات ومدربة مستقلة، بساعد الشركات والمصانع في إنشاء وتطوير أقسام المبيعات ووضع خطط وحلول عملية لمشكلات البيع، علشان نضمن نمو واستقرار الأداء البيعي.</p>
+                        </div>
+                        <div class="about-text-with-icon">
+                            <i class="fas fa-star about-icon"></i>
+                            <p data-translate="about_text2">بؤمن إن نجاح المبيعات بيبدأ من قوة الفريق، علشان كده شغلي بيركّز على تأهيل أفراد التيم من أول أقل فرد فيه لحد ما يبقوا أبطال مبيعات بيحققوا أرقام قياسية في وقت قصير.</p>
+                        </div>
+                        <div class="about-text-with-icon">
+                            <i class="fas fa-globe-americas about-icon"></i>
+                            <p data-translate="about_text3">ومن خلال شغلي مع شركات في السوق المصري والخليجي، اكتشفت فين الثغرات اللي بتوقع المبيعات ومتخليهاش مستقره ولاحظت تكررها على مختلف المجالات</p>
+                        </div>
+                        <div class="about-text-with-icon">
+                            <i class="fas fa-handshake about-icon"></i>
+                            <p data-translate="about_text4">رؤيتي عن البيع انه مش مجرد كلام أو أساليب إقناع، لكنه قناعة حقيقية بالمنتج وبناء ثقة وولاء طويل المدى مع العميل.</p>
+                        </div>
                     </div>
                     <div class="about-image">
-                        <img src="72b19b13-676a-4c2a-b600-3f948241cd0c.jpg" alt="Belal Yasser Portrait">
+                        <img src="heroo.jpeg" alt="Sara Al-Wakil Portrait">
                     </div>
                 </div>
             </div>
@@ -94,36 +106,37 @@
         <section class="achievements" id="achievements">
             <div class="container">
                 <div class="section-header fade-up">
-                    <h2 data-translate="achievements_title">إنجازاتي بالأرقام</h2>
+                    <h2 data-translate="achievements_title" class="neon-text">إنجازاتي بالأرقام</h2>
+                    <p data-translate="achievements_subtitle">نتائج حقيقية وملموسة</p>
                 </div>
                 <div class="achievements-grid">
                     <div class="achievement-card fade-up" style="transition-delay: 0.1s;">
                         <div class="achievement-icon">
-                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-building"></i>
                         </div>
-                        <div class="achievement-number" data-target="4">0</div>
-                        <div class="achievement-label" data-translate="achievements_experience">سنوات خبرة</div>
+                        <div class="achievement-number" data-target="25">0</div>
+                        <div class="achievement-label" data-translate="achievements_companies">شركة ومصنع</div>
                     </div>
                     <div class="achievement-card fade-up" style="transition-delay: 0.2s;">
                         <div class="achievement-icon">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-user-graduate"></i>
                         </div>
-                        <div class="achievement-number" data-target="50">0</div>
-                        <div class="achievement-label" data-translate="achievements_clients">عميل راضٍ</div>
+                        <div class="achievement-number" data-target="200">0</div>
+                        <div class="achievement-label" data-translate="achievements_trained">موظف مبيعات تم تدريبهم</div>
                     </div>
                     <div class="achievement-card fade-up" style="transition-delay: 0.3s;">
                         <div class="achievement-icon">
-                            <i class="fas fa-briefcase"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                        <div class="achievement-number" data-target="100">0</div>
-                        <div class="achievement-label" data-translate="achievements_projects">مشروع مكتمل</div>
+                        <div class="achievement-number" data-target="150">0</div>
+                        <div class="achievement-label" data-translate="achievements_growth">% متوسط نمو المبيعات</div>
                     </div>
                     <div class="achievement-card fade-up" style="transition-delay: 0.4s;">
                         <div class="achievement-icon">
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-trophy"></i>
                         </div>
-                        <div class="achievement-number" data-target="100">0</div>
-                        <div class="achievement-label" data-translate="achievements_satisfaction">رضا العملاء</div>
+                        <div class="achievement-number" data-target="95">0</div>
+                        <div class="achievement-label" data-translate="achievements_satisfaction">% رضا العملاء</div>
                     </div>
                 </div>
             </div>
@@ -132,25 +145,25 @@
         <section class="skills" id="skills">
             <div class="container">
                 <div class="section-header fade-up">
-                    <h2 data-translate="skills_title">البرامج التي أتقنها</h2>
-                    <p data-translate="skills_subtitle">أدوات احترافية لتحويل أفكارك إلى تصاميم مميزة</p>
+                    <h2 data-translate="skills_title">مجالات الخبرة</h2>
+                    <p data-translate="skills_subtitle">خبرات متنوعة في تطوير وإدارة المبيعات</p>
                 </div>
                 <div class="skills-grid">
                     <div class="skill-card fade-up" style="transition-delay: 0.1s;">
                         <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Adobe Photoshop">
+                            <i class="fas fa-users" style="font-size: 60px; color: #00d4ff;"></i>
                         </div>
-                        <h3>Adobe Photoshop</h3>
+                        <h3>إدارة فرق المبيعات</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-progress="100"></div>
+                            <div class="skill-progress" data-progress="95"></div>
                         </div>
-                        <span class="skill-percentage">100%</span>
+                        <span class="skill-percentage">95%</span>
                     </div>
                     <div class="skill-card fade-up" style="transition-delay: 0.2s;">
                         <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Adobe Illustrator">
+                            <i class="fas fa-chalkboard-teacher" style="font-size: 60px; color: #ff6b00;"></i>
                         </div>
-                        <h3>Adobe Illustrator</h3>
+                        <h3>التدريب والتطوير</h3>
                         <div class="skill-bar">
                             <div class="skill-progress" data-progress="90"></div>
                         </div>
@@ -158,9 +171,9 @@
                     </div>
                     <div class="skill-card fade-up" style="transition-delay: 0.3s;">
                         <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Adobe_InDesign_CC_icon.svg" alt="Adobe InDesign">
+                            <i class="fas fa-cogs" style="font-size: 60px; color: #00ff88;"></i>
                         </div>
-                        <h3>Adobe InDesign</h3>
+                        <h3>أنظمة CRM</h3>
                         <div class="skill-bar">
                             <div class="skill-progress" data-progress="85"></div>
                         </div>
@@ -168,13 +181,13 @@
                     </div>
                     <div class="skill-card fade-up" style="transition-delay: 0.4s;">
                         <div class="skill-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Adobe Premiere">
+                            <i class="fas fa-bullseye" style="font-size: 60px; color: #ffd700;"></i>
                         </div>
-                        <h3>Adobe Premiere</h3>
+                        <h3>استراتيجيات البيع</h3>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-progress="60"></div>
+                            <div class="skill-progress" data-progress="92"></div>
                         </div>
-                        <span class="skill-percentage">60%</span>
+                        <span class="skill-percentage">92%</span>
                     </div>
                 </div>
             </div>
@@ -184,28 +197,38 @@
             <div class="container">
                 <div class="section-header fade-up">
                     <h2 data-translate="services_title">خدماتي</h2>
-                    <p data-translate="services_subtitle">بقدّم حلول تصميم تساعد البراند بتاعك يبان بشكل احترافي ويعبّر عن فكرته بوضوح</p>
+                    <p data-translate="services_subtitle">بقدم حلول تطور من البزنس بتاعك وترفع من كفائة التيم وتزود مبيعاتك</p>
                 </div>
                 <div class="services-grid">
                     <div class="service-card fade-up" style="transition-delay: 0.1s;">
-                        <i class="fas fa-hashtag"></i>
-                        <h3 data-translate="service_social_title">تصميم سوشيال ميديا</h3>
-                        <p data-translate="service_social_desc">بوستات – ستوريات – كرياتيف لحملاتك الإعلانية.</p>
+                        <i class="fas fa-building"></i>
+                        <h3 data-translate="service_1_title">تطوير أقسام المبيعات</h3>
+                        <p data-translate="service_1_desc">تدريب الموظفين - عمل Script للمكالمات - تسليم نظام CRM - متابعة شهرية</p>
                     </div>
                     <div class="service-card fade-up" style="transition-delay: 0.2s;">
-                        <i class="fas fa-gem"></i>
-                        <h3 data-translate="service_branding_title">هوية بصرية كاملة</h3>
-                        <p data-translate="service_branding_desc">لوجو – كارت – دليل استخدام الهوية – تطبيقات الهوية على السوشيال ميديا.</p>
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3 data-translate="service_2_title">تدريب فرق المبيعات</h3>
+                        <p data-translate="service_2_desc">كورس سيلز محترف يغطي جميع أساسيات البيع المتقدم</p>
                     </div>
                     <div class="service-card fade-up" style="transition-delay: 0.3s;">
-                        <i class="fas fa-print"></i>
-                        <h3 data-translate="service_print_title">تصميم المطبوعات</h3>
-                        <p data-translate="service_print_desc">فلاير – بروشور – رول أب – كروت شخصية وكل ما يخص الهوية الورقية.</p>
+                        <i class="fas fa-rocket"></i>
+                        <h3 data-translate="service_3_title">إنشاء أقسام المبيعات</h3>
+                        <p data-translate="service_3_desc">خطة تشغيل كاملة - تعيين وتدريب - CRM - تحديد التارجت والعمولات</p>
                     </div>
                     <div class="service-card fade-up" style="transition-delay: 0.4s;">
-                        <i class="fas fa-file-powerpoint"></i>
-                        <h3 data-translate="service_web_title">تصميم العروض التقديمية</h3>
-                        <p data-translate="service_web_desc">عروض احترافية بتصميم جذّاب يعرض أفكارك بطريقة منظمة وسهلة.</p>
+                        <i class="fas fa-user-tie"></i>
+                        <h3 data-translate="service_4_title">الإشراف على فريق المبيعات</h3>
+                        <p data-translate="service_4_desc">متابعة يومية - نصائح وتوجيه - تصحيح الأخطاء - تقارير دورية</p>
+                    </div>
+                    <div class="service-card fade-up" style="transition-delay: 0.5s;">
+                        <i class="fas fa-file-alt"></i>
+                        <h3 data-translate="service_5_title">عمل Script سيناريو المكالمة</h3>
+                        <p data-translate="service_5_desc">سيناريو واضح للمكالمة لضمان تحقيق الهدف وجودة عالية</p>
+                    </div>
+                    <div class="service-card fade-up" style="transition-delay: 0.6s;">
+                        <i class="fas fa-chart-line"></i>
+                        <h3 data-translate="service_6_title">تسليم نظام CRM</h3>
+                        <p data-translate="service_6_desc">نظام متابعة وتحليل البيانات + تدريب التيم + متابعة شهر مجاناً</p>
                     </div>
                 </div>
             </div>
@@ -214,43 +237,172 @@
         <section class="why-me" id="why-me">
             <div class="container">
                  <div class="section-header fade-up">
-                    <h2 data-translate="why_me_title">هتختارني ليه؟</h2>
+                    <h2 data-translate="why_me_title">ليه تختارني؟</h2>
                 </div>
                 <div class="why-me-grid">
                     <div class="why-me-image fade-up">
-                        <img src="Generated Image October 09, 2025 - 8_42PM.png" alt="Why Choose Me Image">
+                        <img src="heroo.jpeg" alt="Why Choose Me Image">
                     </div>
                     <div class="why-me-content fade-up" style="transition-delay: 0.2s;">
                         <ul>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point1">تصميمات مخصصة لهدف مشروعك مش مجرد شكل حلو.</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point2">خبرة حقيقية في البراندينج والسوشيال ميديا.</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point3">مرونة في التعديلات والتسليم في الميعاد.</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point4">تسليم ملفات جاهزة للطباعة أو للنشر مباشرة.</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point5">تواصل سهل وسريع طول فترة الشغل.</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point1">خبرة عملية حقيقية في بناء وتطوير أقسام المبيعات من الصفر</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point2">حلول عملية مجرّبة ومثبت نجاحها في أسواق مختلفة</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point3">متابعة شخصية ودعم مستمر لفريقك حتى تحقيق النتائج</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point4">تسليم أنظمة CRM متكاملة مع تدريب عملي للفريق</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point5">فهم عميق لتحديات المبيعات في السوق المصري والخليجي</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="why_me_point6">نتائج ملموسة وأرقام حقيقية في وقت قصير</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="portfolio" id="portfolio">
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials">
             <div class="container">
                 <div class="section-header fade-up">
-                    <h2 data-translate="portfolio_title">معرض الأعمال</h2>
-                    <p data-translate="portfolio_subtitle">المعرض بيتحدث باستمرار بيضم شغلي في البراندينج، السوشيال ميديا، والتصميمات الطباعية.</p>
+                    <h2 data-translate="testimonials_title" class="neon-text">قصص النجاح</h2>
+                    <p data-translate="testimonials_subtitle">شهادات عملائنا تتحدث عن نفسها</p>
                 </div>
-                <div class="category-list fade-up" style="margin-bottom: 30px;">
-                    <!-- Categories will be loaded dynamically -->
-                </div>
-                <div class="portfolio-grid">
-                    <!-- Images will be loaded dynamically by script.js -->
-                </div>
-                <div class="portfolio-cta fade-up">
-                    <a href="projects.html" class="btn btn-primary" data-translate="portfolio_view_more">عرض كل المشاريع</a>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-up" style="transition-delay: 0.1s;">
+                        <div class="testimonial-icon neon-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p class="testimonial-text" data-translate="testimonial_1_text">"بعد 3 شهور من الشغل مع سارة، قسم المبيعات بتاعنا زاد إنتاجيته 180% والموظفين بقوا أكثر ثقة وكفاءة في التعامل مع العملاء"</p>
+                        <div class="testimonial-author">
+                            <h4 data-translate="testimonial_1_name">أحمد محمود</h4>
+                            <p data-translate="testimonial_1_position">مدير عام - شركة صناعية</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-up" style="transition-delay: 0.2s;">
+                        <div class="testimonial-icon neon-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p class="testimonial-text" data-translate="testimonial_2_text">"نظام الـ CRM اللي سلمتهولنا سارة غيّر طريقة شغلنا تماماً. دلوقتي عندنا رؤية واضحة لكل عميل والأداء اتحسن جداً"</p>
+                        <div class="testimonial-author">
+                            <h4 data-translate="testimonial_2_name">محمد السيد</h4>
+                            <p data-translate="testimonial_2_position">صاحب شركة تجارية</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-up" style="transition-delay: 0.3s;">
+                        <div class="testimonial-icon neon-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p class="testimonial-text" data-translate="testimonial_3_text">"التدريب كان عملي جداً ومفيد. الموظفين طبقوا اللي اتعلموه في نفس اليوم وشفنا نتائج فورية في المبيعات"</p>
+                        <div class="testimonial-author">
+                            <h4 data-translate="testimonial_3_name">خالد عبدالله</h4>
+                            <p data-translate="testimonial_3_position">مدير مبيعات - السعودية</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        
+
+        <!-- Clients Section -->
+        <section class="clients" id="clients">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 data-translate="clients_title" class="neon-text">عملائي</h2>
+                    <p data-translate="clients_subtitle">شركات ومصانع وثقت في خدماتي</p>
+                </div>
+                <div class="clients-gallery">
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.1s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/microsoft.com" alt="Client 1">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.15s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/amazon.com" alt="Client 2">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.2s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/google.com" alt="Client 3">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.25s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/apple.com" alt="Client 4">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.3s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/samsung.com" alt="Client 5">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.35s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/intel.com" alt="Client 6">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.4s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/ibm.com" alt="Client 7">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.45s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/oracle.com" alt="Client 8">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.5s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/cisco.com" alt="Client 9">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.55s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/hp.com" alt="Client 10">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.6s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/dell.com" alt="Client 11">
+                    </div>
+                    <div class="client-logo-box fade-up" style="transition-delay: 0.65s;">
+                        <div class="logo-glow"></div>
+                        <img src="https://logo.clearbit.com/adobe.com" alt="Client 12">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process" id="process">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2 data-translate="process_title" class="neon-text">خطوات العمل</h2>
+                    <p data-translate="process_subtitle">رحلة واضحة من البداية للنتائج</p>
+                </div>
+                <div class="process-timeline">
+                    <div class="process-step fade-up" style="transition-delay: 0.1s;">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 data-translate="process_step1_title">الاستشارة الأولية</h3>
+                        <p data-translate="process_step1_desc">نجتمع لفهم احتياجاتك والتحديات اللي بتواجهها وأهدافك المطلوبة</p>
+                    </div>
+                    <div class="process-step fade-up" style="transition-delay: 0.2s;">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3 data-translate="process_step2_title">التحليل والتخطيط</h3>
+                        <p data-translate="process_step2_desc">تحليل شامل لوضعك الحالي ووضع خطة عمل مخصصة تناسب نشاطك</p>
+                    </div>
+                    <div class="process-step fade-up" style="transition-delay: 0.3s;">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 data-translate="process_step3_title">التنفيذ والتدريب</h3>
+                        <p data-translate="process_step3_desc">تطبيق الخطة وتدريب الفريق على الأدوات والأساليب الجديدة</p>
+                    </div>
+                    <div class="process-step fade-up" style="transition-delay: 0.4s;">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 data-translate="process_step4_title">المتابعة والتطوير</h3>
+                        <p data-translate="process_step4_desc">متابعة دورية للأداء وتقديم الدعم والتوجيه لتحقيق أفضل النتائج</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="contact-wrapper" id="contact">
             <div class="container">
                 <div class="contact fade-up">
