@@ -1,0 +1,45 @@
+/* تحسينات الأداء للهواتف */
+@media (max-width: 768px) {
+    /* تقليل التأثيرات الثقيلة */
+    * {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    /* تبسيط الظلال */
+    .service-card,
+    .skill-card,
+    .testimonial-card,
+    .achievement-card,
+    .process-card,
+    .portfolio-item,
+    .cta-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+        will-change: auto !important;
+    }
+    
+    /* تحسين الأنيميشن */
+    .hero-adobe-icons .sales-icon {
+        animation: float 4s ease-in-out infinite !important;
+    }
+    
+    /* تقليل blur */
+    .logo-glow {
+        filter: none !important;
+    }
+}
+
+/* تحسين عام للأداء */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    will-change: auto;
+}
+
+/* تحسين الأنيميشن للأيقونات العائمة */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
