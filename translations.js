@@ -9,16 +9,19 @@ const translations = {
         nav_process: "خطوات العمل",
         nav_contact: "تواصل معي",
         
+        // Logo
+        logo_name: "د. سارة الوكيل",
+        
         // Hero Section
-        hero_title: "سارة الوكيل",
+        hero_title: "د. سارة الوكيل",
         hero_subtitle: "بساعد شركتك تبني وتطوّر قسم مبيعات قوي يحقق أرقام حقيقية وينمّي البزنس بثقة واستمرار",
         hero_cta: "ابدأ الآن",
         
         // About Section
         about_title: "مين أنا؟",
-        about_text1: "أنا سارة الوكيل، مطوّرة مبيعات ومدربة مستقلة، بساعد الشركات والمصانع في إنشاء وتطوير أقسام المبيعات ووضع خطط وحلول عملية لمشكلات البيع، علشان نضمن نمو واستقرار الأداء البيعي.",
+        about_text1: "أنا د.سارة الوكيل، مطوّرة مبيعات ومدربة، بساعد الشركات والمصانع في إنشاء وتطوير أقسام المبيعات ووضع خطط وحلول عملية لمشكلات البيع، علشان نضمن نمو واستقرار الأداء البيعي.",
         about_text2: "بؤمن إن نجاح المبيعات بيبدأ من قوة الفريق، علشان كده شغلي بيركّز على تأهيل أفراد التيم من أول أقل فرد فيه لحد ما يبقوا أبطال مبيعات بيحققوا أرقام قياسية في وقت قصير.",
-        about_text3: "ومن خلال شغلي مع شركات في السوق المصري والخليجي، اكتشفت فين الثغرات اللي بتوقع المبيعات ومتخليهاش مستقره ولاحظت تكررها على مختلف المجالات",
+        about_text3: "من خلال شغلي في مختلف المجالات والبلدان اكتشفت فين الثغرات اللي بتوقع المبيعات ومتخليهاش مستقره",
         about_text4: "رؤيتي عن البيع انه مش مجرد كلام أو أساليب إقناع، لكنه قناعة حقيقية بالمنتج وبناء ثقة وولاء طويل المدى مع العميل.",
         
         // Achievements Section
@@ -35,7 +38,7 @@ const translations = {
         
         // Services Section
         services_title: "خدماتي",
-        services_subtitle: "بقدم حلول تطور من البزنس بتاعك وترفع من كفائة التيم وتزود مبيعاتك",
+        services_subtitle: "بقدم حلول تطور من البزنس الخاص بيك وترفع من كفائة التيم وتزود مبيعاتك",
         
         service_1_title: "تطوير أقسام المبيعات",
         service_1_desc: "تدريب الموظفين - عمل Script للمكالمات - تسليم نظام CRM - متابعة شهرية",
@@ -53,7 +56,7 @@ const translations = {
         service_5_desc: "سيناريو واضح للمكالمة لضمان تحقيق الهدف وجودة عالية",
         
         service_6_title: "تسليم نظام CRM",
-        service_6_desc: "نظام متابعة وتحليل البيانات + تدريب التيم + متابعة شهر مجاناً",
+        service_6_desc: "نظام متابعة وتحليل البيانات + تدريب التيم + متابعة شهرية",
         
         // Why Me Section
         why_me_title: "ليه تختارني؟",
@@ -148,16 +151,19 @@ const translations = {
         nav_process: "Work Process",
         nav_contact: "Contact",
         
+        // Logo
+        logo_name: "Dr. Sara Elwakil",
+        
         // Hero Section
-        hero_title: "Sara Al-Wakil",
+        hero_title: "Dr. Sara Elwakil",
         hero_subtitle: "I help your company build and develop a strong sales department that achieves real numbers and grows the business with confidence and consistency",
         hero_cta: "Start Now",
         
         // About Section
         about_title: "Who Am I?",
-        about_text1: "I'm Sara Al-Wakil, a sales developer and freelance trainer. I help companies and factories establish and develop sales departments and create practical plans and solutions for sales challenges to ensure growth and stable sales performance.",
+        about_text1: "I'm Dr. Sara Al-Wakil, a sales developer and trainer. I help companies and factories establish and develop sales departments and create practical plans and solutions for sales challenges to ensure growth and stable sales performance.",
         about_text2: "I believe that sales success begins with team strength, which is why my work focuses on qualifying team members from the ground up until they become sales champions achieving record numbers in a short time.",
-        about_text3: "Through my work with companies in the Egyptian and Gulf markets, I discovered the gaps that cause sales to fall and prevent stability, and I noticed their recurrence across different industries.",
+        about_text3: "Through my work across different industries and countries, I discovered the gaps that cause sales to fall and prevent stability",
         about_text4: "My vision of sales is that it's not just words or persuasion techniques, but rather genuine belief in the product and building long-term trust and loyalty with the client.",
         
         // Achievements Section
@@ -174,7 +180,7 @@ const translations = {
         
         // Services Section
         services_title: "My Services",
-        services_subtitle: "I provide solutions that develop your business, increase team efficiency, and boost your sales",
+        services_subtitle: "I provide solutions that develop your own business, increase team efficiency, and boost your sales",
         
         service_1_title: "Sales Department Development",
         service_1_desc: "Employee training - Call Scripts - CRM system delivery - Monthly follow-up",
@@ -192,7 +198,7 @@ const translations = {
         service_5_desc: "Clear call scenario to ensure goal achievement and high quality",
         
         service_6_title: "CRM System Delivery",
-        service_6_desc: "Data tracking & analysis system + Team training + Free monthly follow-up",
+        service_6_desc: "Data tracking & analysis system + Team training + Monthly follow-up",
         service_web_desc: "Professional presentations with attractive design that presents your ideas in an organized and easy way.",
         
         // Why Me Section

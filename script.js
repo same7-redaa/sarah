@@ -6,27 +6,6 @@ const resourceCache = {
     projects: []
 };
 
-// Performance optimization: Disable hover effects during scroll on mobile
-let scrollTimer;
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-if (isMobile) {
-    let isScrolling = false;
-    
-    window.addEventListener('scroll', () => {
-        if (!isScrolling) {
-            document.body.classList.add('disable-hover');
-            isScrolling = true;
-        }
-        
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => {
-            document.body.classList.remove('disable-hover');
-            isScrolling = false;
-        }, 150);
-    }, { passive: true });
-}
-
 // Language toggle function
 function toggleLanguage() {
     const currentLang = getCurrentLanguage();
@@ -442,4 +421,118 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Testimonials Slider
+    const slider = document.querySelector('.testimonials-slider');
+    const nextBtn = document.querySelector('.slider-next');
+    const prevBtn = document.querySelector('.slider-prev');
+    const dotsContainer = document.querySelector('.testimonials-dots');
+    
+    // Wait for slides to be loaded from Firebase
+    function initTestimonialsSlider() {
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.testimonials-dots .dot');
+        
+        if (!slider || slides.length === 0) {
+            console.log('Slider not ready, retrying...');
+            setTimeout(initTestimonialsSlider, 500);
+            return;
+        }
+        
+        let currentSlide = 0;
+        
+        console.log(`Initializing slider with ${slides.length} slides`);
+        
+        window.updateSlider = function() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (dots[index]) dots[index].classList.remove('active');
+            });
+            slides[currentSlide].classList.add('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+        }
+        
+        window.goToSlide = function(index) {
+            currentSlide = index;
+            window.updateSlider();
+        }
+        
+        window.nextSlide = function() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            window.updateSlider();
+        }
+        
+        window.prevSlide = function() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            window.updateSlider();
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', window.nextSlide);
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', window.prevSlide);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                window.nextSlide();
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                window.prevSlide();
+            }
+        });
+        
+        // Touch swipe support
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        slider.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        });
+        
+        slider.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].clientY;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartY - touchEndY;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    window.nextSlide();
+                } else {
+                    window.prevSlide();
+                }
+            }
+        }
+        
+        // Auto play (optional)
+        let autoPlayInterval;
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(window.nextSlide, 5000);
+        }
+        
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+        
+        // Start auto play
+        startAutoPlay();
+        
+        // Pause on hover
+        slider.addEventListener('mouseenter', stopAutoPlay);
+        slider.addEventListener('mouseleave', startAutoPlay);
+        
+        console.log('Testimonials slider initialized successfully');
+    }
+    
+    // Initialize slider immediately and also after DOM load
+    initTestimonialsSlider();
+    window.initTestimonialsSlider = initTestimonialsSlider;
+    
 });

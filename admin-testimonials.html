@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - إدارة قصص النجاح</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #ff5722;
+        }
+
+        .header p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        .add-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .add-form h2 {
+            margin-bottom: 20px;
+            color: #ff5722;
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid rgba(255, 87, 34, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff5722;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 5px;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 87, 34, 0.4);
+        }
+
+        .btn-edit {
+            background: linear-gradient(135deg, #2196F3, #03A9F4);
+            color: white;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .btn-delete {
+            background: linear-gradient(135deg, #f44336, #e91e63);
+            color: white;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .image-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 87, 34, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff5722;
+            box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .image-card-body {
+            padding: 20px;
+        }
+
+        .image-card-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #ff5722;
+            font-weight: 600;
+        }
+
+        .image-card-link {
+            font-size: 0.85rem;
+            color: #aaa;
+            word-break: break-all;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .image-card-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #ff5722;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: #ff5722;
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert-success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+        }
+
+        .alert-error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid #f44336;
+            color: #f44336;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #2d2d2d;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid rgba(255, 87, 34, 0.3);
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            color: #ff5722;
+            font-size: 1.5rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .btn-cancel {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .images-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-card-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Google Drive Link Converter */
+        .converter-info {
+            background: rgba(33, 150, 243, 0.1);
+            border: 2px solid rgba(33, 150, 243, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .converter-info p {
+            color: #2196F3;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-images"></i> لوحة تحكم قصص النجاح</h1>
+            <p>إدارة صور قسم قصص النجاح بسهولة</p>
+        </div>
+
+        <div id="alertContainer"></div>
+
+        <!-- Add New Image Form -->
+        <div class="add-form">
+            <h2><i class="fas fa-plus-circle"></i> إضافة صورة جديدة</h2>
+            
+            <div class="converter-info">
+                <p><strong><i class="fas fa-info-circle"></i> محول روابط Google Drive التلقائي:</strong></p>
+                <p>• الصق رابط Google Drive العادي وسيتم تحويله تلقائياً</p>
+                <p>• مثال: https://drive.google.com/file/d/ABC123/view</p>
+                <p>• سيتم تحويله إلى: https://drive.google.com/uc?export=view&id=ABC123</p>
+            </div>
+
+            <form id="addImageForm">
+                <div class="form-group">
+                    <label for="imageTitle"><i class="fas fa-heading"></i> عنوان الصورة</label>
+                    <input type="text" id="imageTitle" placeholder="مثال: نجاح شركة ABC" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="imageUrl"><i class="fas fa-link"></i> رابط Google Drive</label>
+                    <input type="url" id="imageUrl" placeholder="https://drive.google.com/file/d/..." required>
+                    <small>الصق رابط الصورة من Google Drive (أي صيغة) وسيتم التحويل تلقائياً</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> إضافة الصورة
+                </button>
+            </form>
+        </div>
+
+        <!-- Images Grid -->
+        <div id="imagesContainer">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i> جاري تحميل الصور...
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> تعديل الصورة</h3>
+            </div>
+            <form id="editImageForm">
+                <div class="form-group">
+                    <label for="editImageTitle"><i class="fas fa-heading"></i> عنوان الصورة</label>
+                    <input type="text" id="editImageTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editImageUrl"><i class="fas fa-link"></i> رابط Google Drive</label>
+                    <input type="url" id="editImageUrl" required>
+                    <small>يتم التحويل التلقائي لروابط Google Drive</small>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" onclick="closeEditModal()">
+                        <i class="fas fa-times"></i> إلغاء
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> حفظ التغييرات
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { db, collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from './firebase-config.js';
+
+        const COLLECTION_NAME = 'testimonials';
+        let currentEditId = null;
+
+        // Google Drive Link Converter
+        function convertGoogleDriveLink(url) {
+            if (!url) return url;
+            
+            // Check if it's already a direct link
+            if (url.includes('uc?export=view') || url.includes('uc?id=')) {
+                return url;
+            }
+
+            // Extract file ID from various Google Drive URL formats
+            let fileId = null;
+            
+            // Format: https://drive.google.com/file/d/FILE_ID/view
+            const match1 = url.match(/\/file\/d\/([^\/]+)/);
+            if (match1) {
+                fileId = match1[1];
+            }
+            
+            // Format: https://drive.google.com/open?id=FILE_ID
+            const match2 = url.match(/[?&]id=([^&]+)/);
+            if (match2) {
+                fileId = match2[1];
+            }
+
+            // If file ID found, convert to direct link
+            if (fileId) {
+                return `https://drive.google.com/uc?export=view&id=${fileId}`;
+            }
+
+            return url;
+        }
+
+        // Show Alert
+        function showAlert(message, type = 'success') {
+            const alertContainer = document.getElementById('alertContainer');
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            alertContainer.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+
+        // Load Images
+        async function loadImages() {
+            const container = document.getElementById('imagesContainer');
+            
+            try {
+                const querySnapshot = await getDocs(collection(db, COLLECTION_NAME));
+                const images = [];
+                
+                querySnapshot.forEach((doc) => {
+                    images.push({ id: doc.id, ...doc.data() });
+                });
+
+                if (images.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-images"></i>
+                            <h3>لا توجد صور حالياً</h3>
+                            <p>ابدأ بإضافة أول صورة من النموذج أعلاه</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = '<div class="images-grid"></div>';
+                const grid = container.querySelector('.images-grid');
+
+                images.forEach(image => {
+                    const card = document.createElement('div');
+                    card.className = 'image-card';
+                    card.innerHTML = `
+                        <img src="${image.url}" alt="${image.title}" onerror="this.src='https://via.placeholder.com/300x250?text=Error+Loading+Image'">
+                        <div class="image-card-body">
+                            <div class="image-card-title">${image.title}</div>
+                            <small class="image-card-link">${image.url.substring(0, 50)}...</small>
+                            <div class="image-card-actions">
+                                <button class="btn btn-edit" onclick="editImage('${image.id}', '${image.title.replace(/'/g, "\\'")}', '${image.url}')">
+                                    <i class="fas fa-edit"></i> تعديل
+                                </button>
+                                <button class="btn btn-delete" onclick="deleteImage('${image.id}', '${image.title.replace(/'/g, "\\'")}')">
+                                    <i class="fas fa-trash"></i> حذف
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error('Error loading images:', error);
+                container.innerHTML = `
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>حدث خطأ في تحميل الصور: ${error.message}</span>
+                    </div>
+                `;
+            }
+        }
+
+        // Add Image
+        document.getElementById('addImageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('imageTitle').value.trim();
+            const url = convertGoogleDriveLink(document.getElementById('imageUrl').value.trim());
+
+            try {
+                await addDoc(collection(db, COLLECTION_NAME), {
+                    title: title,
+                    url: url,
+                    createdAt: new Date().toISOString()
+                });
+
+                showAlert('تم إضافة الصورة بنجاح!', 'success');
+                document.getElementById('addImageForm').reset();
+                loadImages();
+            } catch (error) {
+                console.error('Error adding image:', error);
+                showAlert('حدث خطأ في إضافة الصورة: ' + error.message, 'error');
+            }
+        });
+
+        // Edit Image
+        window.editImage = function(id, title, url) {
+            currentEditId = id;
+            document.getElementById('editImageTitle').value = title;
+            document.getElementById('editImageUrl').value = url;
+            document.getElementById('editModal').classList.add('active');
+        };
+
+        window.closeEditModal = function() {
+            document.getElementById('editModal').classList.remove('active');
+            currentEditId = null;
+        };
+
+        document.getElementById('editImageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('editImageTitle').value.trim();
+            const url = convertGoogleDriveLink(document.getElementById('editImageUrl').value.trim());
+
+            try {
+                await updateDoc(doc(db, COLLECTION_NAME, currentEditId), {
+                    title: title,
+                    url: url,
+                    updatedAt: new Date().toISOString()
+                });
+
+                showAlert('تم تحديث الصورة بنجاح!', 'success');
+                closeEditModal();
+                loadImages();
+            } catch (error) {
+                console.error('Error updating image:', error);
+                showAlert('حدث خطأ في تحديث الصورة: ' + error.message, 'error');
+            }
+        });
+
+        // Delete Image
+        window.deleteImage = async function(id, title) {
+            if (!confirm(`هل أنت متأكد من حذف الصورة "${title}"؟`)) {
+                return;
+            }
+
+            try {
+                await deleteDoc(doc(db, COLLECTION_NAME, id));
+                showAlert('تم حذف الصورة بنجاح!', 'success');
+                loadImages();
+            } catch (error) {
+                console.error('Error deleting image:', error);
+                showAlert('حدث خطأ في حذف الصورة: ' + error.message, 'error');
+            }
+        };
+
+        // Close modal on outside click
+        document.getElementById('editModal').addEventListener('click', (e) => {
+            if (e.target.id === 'editModal') {
+                closeEditModal();
+            }
+        });
+
+        // Initial Load
+        loadImages();
+    </script>
+</body>
+</html>

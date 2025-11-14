@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - د. سارة الوكيل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Login Page */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 87, 34, 0.3);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            color: #ff5722;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: #aaa;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid rgba(255, 87, 34, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff5722;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 87, 34, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(255, 87, 34, 0.3);
+        }
+
+        .dashboard-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dashboard-header h1 {
+            color: #ff5722;
+            font-size: 1.5rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-email {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .btn-logout {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid #f44336;
+            color: #f44336;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .btn-logout:hover {
+            background: #f44336;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 87, 34, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #aaa;
+        }
+
+        .tab.active {
+            background: rgba(255, 87, 34, 0.2);
+            border-color: #ff5722;
+            color: #ff5722;
+        }
+
+        .tab:hover {
+            color: #ff5722;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            color: #ff5722;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #aaa;
+        }
+
+        .add-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 87, 34, 0.2);
+        }
+
+        .converter-info {
+            background: rgba(33, 150, 243, 0.1);
+            border: 2px solid rgba(33, 150, 243, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .converter-info p {
+            color: #2196F3;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .image-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 87, 34, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff5722;
+            box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .image-card-body {
+            padding: 20px;
+        }
+
+        .image-card-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #ff5722;
+            font-weight: 600;
+        }
+
+        .image-card-link {
+            font-size: 0.85rem;
+            color: #aaa;
+            word-break: break-all;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .image-card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-edit {
+            flex: 1;
+            background: linear-gradient(135deg, #2196F3, #03A9F4);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-delete {
+            flex: 1;
+            background: linear-gradient(135deg, #f44336, #e91e63);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit:hover, .btn-delete:hover {
+            transform: translateY(-2px);
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert-success {
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+        }
+
+        .alert-error {
+            background: rgba(244, 67, 54, 0.2);
+            border: 2px solid #f44336;
+            color: #f44336;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2rem;
+            color: #ff5722;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: #ff5722;
+            margin-bottom: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #2d2d2d;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            border: 2px solid rgba(255, 87, 34, 0.3);
+        }
+
+        .modal-header h3 {
+            color: #ff5722;
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .btn-cancel {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .refresh-notice {
+            background: rgba(33, 150, 243, 0.15);
+            border: 2px solid rgba(33, 150, 243, 0.4);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #2196F3;
+        }
+
+        .refresh-notice i {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .images-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1><i class="fas fa-shield-alt"></i> تسجيل الدخول</h1>
+                <p>لوحة تحكم الموقع</p>
+            </div>
+            <div id="loginAlert"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                    <input type="email" id="email" required placeholder="admin@example.com">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> كلمة المرور</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> دخول
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1><i class="fas fa-tachometer-alt"></i> لوحة التحكم</h1>
+                <div class="user-info">
+                    <span class="user-email" id="userEmail"></span>
+                    <button class="btn-logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> خروج
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="refresh-notice">
+                <i class="fas fa-info-circle"></i>
+                <div style="flex: 1;">
+                    <strong>تنبيه مهم:</strong> بعد إضافة أو تعديل الصور، حدّث الصفحة الرئيسية بالضغط على 
+                    <strong>Ctrl + Shift + R</strong> (Windows) أو <strong>Cmd + Shift + R</strong> (Mac)
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('testimonials')">
+                    <i class="fas fa-images"></i> قصص النجاح
+                </div>
+                <div class="tab" onclick="switchTab('clients')">
+                    <i class="fas fa-briefcase"></i> العملاء
+                </div>
+            </div>
+
+            <div id="alertContainer"></div>
+
+            <!-- Testimonials Tab -->
+            <div id="testimonialsTab" class="tab-content active">
+                <div class="section-header">
+                    <h2><i class="fas fa-images"></i> إدارة قصص النجاح</h2>
+                    <p>إضافة وتعديل وحذف صور قسم قصص النجاح</p>
+                </div>
+
+                <div class="add-form">
+                    <h3 style="color: #ff5722; margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> إضافة صورة جديدة</h3>
+                    
+                    <div class="converter-info">
+                        <p><strong><i class="fas fa-info-circle"></i> خطوات رفع صورة من Google Drive:</strong></p>
+                        <p>1️⃣ ارفع الصورة على Google Drive</p>
+                        <p>2️⃣ اضغط كليك يمين → مشاركة → تغيير إلى "أي شخص لديه الرابط"</p>
+                        <p>3️⃣ انسخ الرابط والصقه هنا (سيتم التحويل تلقائياً)</p>
+                        <p>✅ أو استخدم روابط مباشرة من Imgur أو أي مصدر آخر</p>
+                    </div>
+
+                    <form id="addTestimonialForm">
+                        <div class="form-group">
+                            <label><i class="fas fa-heading"></i> عنوان الصورة</label>
+                            <input type="text" id="testimonialTitle" placeholder="مثال: نجاح شركة ABC" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-link"></i> رابط Google Drive</label>
+                            <input type="url" id="testimonialUrl" placeholder="https://drive.google.com/file/d/..." required>
+                        </div>
+
+                        <div id="testimonialPreview" style="display: none; margin: 15px 0; text-align: center;">
+                            <p style="color: #4CAF50; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> معاينة الصورة:</p>
+                            <img id="testimonialPreviewImg" style="max-width: 100%; max-height: 300px; border-radius: 10px; border: 2px solid #4CAF50;">
+                        </div>
+
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" class="btn btn-primary" onclick="previewTestimonialImage()" style="flex: 1;">
+                                <i class="fas fa-eye"></i> معاينة الصورة
+                            </button>
+                            <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                <i class="fas fa-save"></i> إضافة الصورة
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="testimonialsContainer">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i> جاري تحميل الصور...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clients Tab -->
+            <div id="clientsTab" class="tab-content">
+                <div class="section-header">
+                    <h2><i class="fas fa-briefcase"></i> إدارة صور العملاء</h2>
+                    <p>إضافة وتعديل وحذف شعارات العملاء</p>
+                </div>
+
+                <div class="add-form">
+                    <h3 style="color: #ff5722; margin-bottom: 20px;"><i class="fas fa-plus-circle"></i> إضافة شعار عميل</h3>
+                    
+                    <div class="converter-info">
+                        <p><strong><i class="fas fa-info-circle"></i> خطوات رفع شعار من Google Drive:</strong></p>
+                        <p>1️⃣ ارفع الشعار على Google Drive</p>
+                        <p>2️⃣ اضغط كليك يمين → مشاركة → تغيير إلى "أي شخص لديه الرابط"</p>
+                        <p>3️⃣ انسخ الرابط والصقه هنا (سيتم التحويل تلقائياً)</p>
+                        <p>✅ أو استخدم روابط مباشرة من Imgur أو أي مصدر آخر</p>
+                    </div>
+
+                    <form id="addClientForm">
+                        <div class="form-group">
+                            <label><i class="fas fa-building"></i> اسم العميل</label>
+                            <input type="text" id="clientName" placeholder="مثال: شركة التقنية المتقدمة" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label><i class="fas fa-link"></i> رابط Google Drive للشعار</label>
+                            <input type="url" id="clientUrl" placeholder="https://drive.google.com/file/d/..." required>
+                        </div>
+
+                        <div id="clientPreview" style="display: none; margin: 15px 0; text-align: center;">
+                            <p style="color: #4CAF50; margin-bottom: 10px;"><i class="fas fa-check-circle"></i> معاينة الشعار:</p>
+                            <img id="clientPreviewImg" style="max-width: 100%; max-height: 200px; border-radius: 10px; border: 2px solid #4CAF50; background: white; padding: 10px;">
+                        </div>
+
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" class="btn btn-primary" onclick="previewClientImage()" style="flex: 1;">
+                                <i class="fas fa-eye"></i> معاينة الشعار
+                            </button>
+                            <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                <i class="fas fa-save"></i> إضافة العميل
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="clientsContainer">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i> جاري تحميل شعارات العملاء...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"><i class="fas fa-edit"></i> تعديل</h3>
+            </div>
+            <form id="editForm">
+                <div class="form-group">
+                    <label id="editTitleLabel"><i class="fas fa-heading"></i> العنوان</label>
+                    <input type="text" id="editTitle" required>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-link"></i> رابط Google Drive</label>
+                    <input type="url" id="editUrl" required>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeEditModal()">
+                        <i class="fas fa-times"></i> إلغاء
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> حفظ التغييرات
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { db, auth, collection, getDocs, addDoc, updateDoc, deleteDoc, doc, signInWithEmailAndPassword, signOut, onAuthStateChanged } from './firebase-config.js';
+
+        let currentTab = 'testimonials';
+        let currentEditId = null;
+        let currentEditCollection = null;
+
+        // Google Drive Link Converter
+        function convertGoogleDriveLink(url) {
+            if (!url) return url;
+            
+            // إذا كان الرابط مباشر بالفعل، أرجعه كما هو
+            if (url.includes('uc?export=view') || url.includes('uc?id=') || url.includes('drive.google.com/thumbnail')) {
+                return url;
+            }
+            
+            // إذا كان رابط مباشر من مصدر آخر (imgur, etc)
+            if (!url.includes('drive.google.com')) {
+                return url;
+            }
+            
+            let fileId = null;
+            
+            // صيغة: https://drive.google.com/file/d/FILE_ID/view
+            const match1 = url.match(/\/file\/d\/([^\/\?]+)/);
+            if (match1) {
+                fileId = match1[1];
+            }
+            
+            // صيغة: https://drive.google.com/open?id=FILE_ID
+            const match2 = url.match(/[?&]id=([^&]+)/);
+            if (match2) {
+                fileId = match2[1];
+            }
+            
+            // صيغة: https://drive.google.com/uc?id=FILE_ID
+            const match3 = url.match(/uc\?id=([^&]+)/);
+            if (match3) {
+                fileId = match3[1];
+            }
+
+            if (fileId) {
+                // تنظيف FILE_ID من أي معاملات إضافية
+                fileId = fileId.split('?')[0].split('&')[0];
+                return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+            }
+            
+            return url;
+        }
+
+        // Preview Functions
+        window.previewTestimonialImage = function() {
+            const url = document.getElementById('testimonialUrl').value.trim();
+            if (!url) {
+                showAlert('الرجاء إدخال رابط الصورة أولاً', 'error');
+                return;
+            }
+            
+            const convertedUrl = convertGoogleDriveLink(url);
+            const preview = document.getElementById('testimonialPreview');
+            const img = document.getElementById('testimonialPreviewImg');
+            
+            preview.style.display = 'block';
+            img.src = convertedUrl;
+            
+            img.onerror = function() {
+                showAlert('فشل تحميل الصورة! تأكد من: 1) الملف عام (Anyone with the link) 2) الرابط صحيح', 'error');
+                preview.style.display = 'none';
+            };
+            
+            img.onload = function() {
+                showAlert('الصورة تعمل بشكل صحيح! ✅', 'success');
+            };
+        };
+
+        window.previewClientImage = function() {
+            const url = document.getElementById('clientUrl').value.trim();
+            if (!url) {
+                showAlert('الرجاء إدخال رابط الشعار أولاً', 'error');
+                return;
+            }
+            
+            const convertedUrl = convertGoogleDriveLink(url);
+            const preview = document.getElementById('clientPreview');
+            const img = document.getElementById('clientPreviewImg');
+            
+            preview.style.display = 'block';
+            img.src = convertedUrl;
+            
+            img.onerror = function() {
+                showAlert('فشل تحميل الشعار! تأكد من: 1) الملف عام (Anyone with the link) 2) الرابط صحيح', 'error');
+                preview.style.display = 'none';
+            };
+            
+            img.onload = function() {
+                showAlert('الشعار يعمل بشكل صحيح! ✅', 'success');
+            };
+        };
+
+        // Show Alert
+        function showAlert(message, type = 'success', containerId = 'alertContainer') {
+            const container = document.getElementById(containerId);
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            container.appendChild(alert);
+            setTimeout(() => alert.remove(), 5000);
+        }
+
+        // Authentication
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري تسجيل الدخول...';
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                showAlert('تم تسجيل الدخول بنجاح!', 'success', 'loginAlert');
+            } catch (error) {
+                console.error('Login error:', error);
+                let errorMessage = 'فشل تسجيل الدخول';
+                if (error.code === 'auth/wrong-password') errorMessage = 'كلمة المرور غير صحيحة';
+                if (error.code === 'auth/user-not-found') errorMessage = 'المستخدم غير موجود';
+                if (error.code === 'auth/invalid-email') errorMessage = 'البريد الإلكتروني غير صالح';
+                if (error.code === 'auth/invalid-credential') errorMessage = 'البريد أو كلمة المرور غير صحيحة';
+                showAlert(errorMessage, 'error', 'loginAlert');
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> دخول';
+            }
+        });
+
+        window.logout = async function() {
+            if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                try {
+                    await signOut(auth);
+                    showAlert('تم تسجيل الخروج بنجاح', 'success');
+                } catch (error) {
+                    console.error('Logout error:', error);
+                }
+            }
+        };
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('dashboard').classList.add('active');
+                document.getElementById('userEmail').textContent = user.email;
+                loadTestimonials();
+                loadClients();
+            } else {
+                document.getElementById('loginPage').style.display = 'flex';
+                document.getElementById('dashboard').classList.remove('active');
+            }
+        });
+
+        // Tab Switching
+        window.switchTab = function(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            if (tab === 'testimonials') {
+                document.querySelectorAll('.tab')[0].classList.add('active');
+                document.getElementById('testimonialsTab').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab')[1].classList.add('active');
+                document.getElementById('clientsTab').classList.add('active');
+            }
+        };
+
+        // Load Testimonials
+        async function loadTestimonials() {
+            const container = document.getElementById('testimonialsContainer');
+            try {
+                const querySnapshot = await getDocs(collection(db, 'testimonials'));
+                const items = [];
+                querySnapshot.forEach((doc) => {
+                    items.push({ id: doc.id, ...doc.data() });
+                });
+
+                if (items.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><i class="fas fa-images"></i><h3>لا توجد صور</h3></div>';
+                    return;
+                }
+
+                container.innerHTML = '<div class="images-grid"></div>';
+                const grid = container.querySelector('.images-grid');
+
+                items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'image-card';
+                    card.innerHTML = `
+                        <img src="${item.url}" alt="${item.title}">
+                        <div class="image-card-body">
+                            <div class="image-card-title">${item.title}</div>
+                            <small class="image-card-link">${item.url.substring(0, 50)}...</small>
+                            <div class="image-card-actions">
+                                <button class="btn-edit" onclick="editItem('testimonials', '${item.id}', '${item.title.replace(/'/g, "\\'")}', '${item.url}')">
+                                    <i class="fas fa-edit"></i> تعديل
+                                </button>
+                                <button class="btn-delete" onclick="deleteItem('testimonials', '${item.id}', '${item.title.replace(/'/g, "\\'")}')">
+                                    <i class="fas fa-trash"></i> حذف
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading testimonials:', error);
+                container.innerHTML = `<div class="alert alert-error"><i class="fas fa-exclamation-circle"></i><span>خطأ: ${error.message}</span></div>`;
+            }
+        }
+
+        // Load Clients
+        async function loadClients() {
+            const container = document.getElementById('clientsContainer');
+            try {
+                const querySnapshot = await getDocs(collection(db, 'clients'));
+                const items = [];
+                querySnapshot.forEach((doc) => {
+                    items.push({ id: doc.id, ...doc.data() });
+                });
+
+                if (items.length === 0) {
+                    container.innerHTML = '<div class="empty-state"><i class="fas fa-briefcase"></i><h3>لا توجد شعارات عملاء</h3></div>';
+                    return;
+                }
+
+                container.innerHTML = '<div class="images-grid"></div>';
+                const grid = container.querySelector('.images-grid');
+
+                items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'image-card';
+                    card.innerHTML = `
+                        <img src="${item.url}" alt="${item.name}">
+                        <div class="image-card-body">
+                            <div class="image-card-title">${item.name}</div>
+                            <small class="image-card-link">${item.url.substring(0, 50)}...</small>
+                            <div class="image-card-actions">
+                                <button class="btn-edit" onclick="editItem('clients', '${item.id}', '${item.name.replace(/'/g, "\\'")}', '${item.url}')">
+                                    <i class="fas fa-edit"></i> تعديل
+                                </button>
+                                <button class="btn-delete" onclick="deleteItem('clients', '${item.id}', '${item.name.replace(/'/g, "\\'")}')">
+                                    <i class="fas fa-trash"></i> حذف
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading clients:', error);
+                container.innerHTML = `<div class="alert alert-error"><i class="fas fa-exclamation-circle"></i><span>خطأ: ${error.message}</span></div>`;
+            }
+        }
+
+        // Add Testimonial
+        document.getElementById('addTestimonialForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('testimonialTitle').value.trim();
+            const url = convertGoogleDriveLink(document.getElementById('testimonialUrl').value.trim());
+
+            try {
+                await addDoc(collection(db, 'testimonials'), {
+                    title, url, createdAt: new Date().toISOString()
+                });
+                showAlert('✅ تم إضافة الصورة بنجاح! حدّث الصفحة الرئيسية (Ctrl+Shift+R) لرؤية التغييرات', 'success');
+                document.getElementById('addTestimonialForm').reset();
+                document.getElementById('testimonialPreview').style.display = 'none';
+                loadTestimonials();
+            } catch (error) {
+                showAlert('خطأ: ' + error.message, 'error');
+            }
+        });
+
+        // Add Client
+        document.getElementById('addClientForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value.trim();
+            const url = convertGoogleDriveLink(document.getElementById('clientUrl').value.trim());
+
+            try {
+                await addDoc(collection(db, 'clients'), {
+                    name, url, createdAt: new Date().toISOString()
+                });
+                showAlert('✅ تم إضافة العميل بنجاح! حدّث الصفحة الرئيسية (Ctrl+Shift+R) لرؤية التغييرات', 'success');
+                document.getElementById('addClientForm').reset();
+                document.getElementById('clientPreview').style.display = 'none';
+                loadClients();
+            } catch (error) {
+                showAlert('خطأ: ' + error.message, 'error');
+            }
+        });
+
+        // Edit Item
+        window.editItem = function(collectionName, id, title, url) {
+            currentEditId = id;
+            currentEditCollection = collectionName;
+            document.getElementById('modalTitle').innerHTML = collectionName === 'testimonials' ? 
+                '<i class="fas fa-edit"></i> تعديل صورة النجاح' : 
+                '<i class="fas fa-edit"></i> تعديل شعار العميل';
+            document.getElementById('editTitleLabel').innerHTML = collectionName === 'testimonials' ? 
+                '<i class="fas fa-heading"></i> عنوان الصورة' : 
+                '<i class="fas fa-building"></i> اسم العميل';
+            document.getElementById('editTitle').value = title;
+            document.getElementById('editUrl').value = url;
+            document.getElementById('editModal').classList.add('active');
+        };
+
+        window.closeEditModal = function() {
+            document.getElementById('editModal').classList.remove('active');
+            currentEditId = null;
+            currentEditCollection = null;
+        };
+
+        document.getElementById('editForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('editTitle').value.trim();
+            const url = convertGoogleDriveLink(document.getElementById('editUrl').value.trim());
+
+            try {
+                const fieldName = currentEditCollection === 'testimonials' ? 'title' : 'name';
+                await updateDoc(doc(db, currentEditCollection, currentEditId), {
+                    [fieldName]: title,
+                    url: url,
+                    updatedAt: new Date().toISOString()
+                });
+                showAlert('✅ تم التحديث بنجاح! حدّث الصفحة الرئيسية (Ctrl+Shift+R) لرؤية التغييرات', 'success');
+                closeEditModal();
+                if (currentEditCollection === 'testimonials') loadTestimonials();
+                else loadClients();
+            } catch (error) {
+                showAlert('خطأ: ' + error.message, 'error');
+            }
+        });
+
+        // Delete Item
+        window.deleteItem = async function(collectionName, id, name) {
+            if (!confirm(`هل أنت متأكد من حذف "${name}"؟`)) return;
+
+            try {
+                await deleteDoc(doc(db, collectionName, id));
+                showAlert('✅ تم الحذف بنجاح! حدّث الصفحة الرئيسية (Ctrl+Shift+R) لرؤية التغييرات', 'success');
+                if (collectionName === 'testimonials') loadTestimonials();
+                else loadClients();
+            } catch (error) {
+                showAlert('خطأ: ' + error.message, 'error');
+            }
+        };
+
+        document.getElementById('editModal').addEventListener('click', (e) => {
+            if (e.target.id === 'editModal') closeEditModal();
+        });
+    </script>
+</body>
+</html>
